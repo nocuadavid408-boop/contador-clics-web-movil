@@ -1,0 +1,7 @@
+# Contador de clics: de la Web al Móvil
+
+**Aprendiz:** Joshua David Nocua Carrillo - Ficha 3407184
+
+## Ramas
+- `web`: aplicación web con HTML, CSS y JavaScript.
+- `movil`: aplicación móvil con React Native y Expo.
