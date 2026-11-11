@@ -6,6 +6,22 @@
   <title>Contador de clics</title>
 </head>
 <body>
+  <main class="tarjeta">
+    <h1>Interactividad con el DOM</h1>
+    <p class="subtitulo">Haz clic en el botón para incrementar el contador y registrar la hora exacta del evento en la tabla.</p>
 
+    <div id="contador" class="contador">0</div>
+    <button id="btn-like" class="btn">¡Haz Clic Aquí!</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nº Clic</th>
+          <th>Hora</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-registros"></tbody>
+    </table>
+  </main>
 </body>
 </html>
