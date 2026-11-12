@@ -19,6 +19,15 @@ export default function App() {
     setRegistros([{ id: Date.now(), numero: nuevo, hora }, ...registros]);
   };
 
+  const restarContador = () => {
+    if (contador > 0) setContador(contador - 1);
+  };
+
+  const reiniciar = () => {
+    setContador(0);
+    setRegistros([]);
+  };
+
   return (
     <View style={estilos.body}>
       <View style={estilos.card}>
@@ -29,10 +38,18 @@ export default function App() {
 
         <Text style={estilos.counterBox}>{contador}</Text>
 
-        {/* Botón disparador de eventos */}
-        <TouchableOpacity style={estilos.btnClick} onPress={incrementarContador}>
-          <Text style={estilos.btnText}>¡Haz Clic Aquí!</Text>
-        </TouchableOpacity>
+        {/* Botones */}
+        <View style={estilos.fila}>
+          <TouchableOpacity style={estilos.btnClick} onPress={incrementarContador}>
+            <Text style={estilos.btnText}>¡Haz Clic Aquí!</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[estilos.btnClick, estilos.btnRestar]} onPress={restarContador}>
+            <Text style={estilos.btnText}>Restar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[estilos.btnClick, estilos.btnReiniciar]} onPress={reiniciar}>
+            <Text style={estilos.btnText}>Reiniciar</Text>
+          </TouchableOpacity>
+        </View>
 
         {/* Tabla de registros */}
         <View style={estilos.tableContainer}>
@@ -92,6 +109,9 @@ const estilos = StyleSheet.create({
     elevation: 4,
   },
   btnText: { color: "#ffffff", fontSize: 16, fontWeight: "bold" },
+  fila: { flexDirection: "row", flexWrap: "wrap", gap: 8, justifyContent: "center" },
+  btnRestar: { backgroundColor: "#e74c3c" },
+  btnReiniciar: { backgroundColor: "#95a5a6" },
   tableContainer: {
     width: "100%",
     marginTop: 24,
