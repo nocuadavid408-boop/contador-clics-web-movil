@@ -7,7 +7,16 @@ const tbody = document.getElementById("tabla-registros");
 let likes = 0;
 
 // 2. Escuchar el evento click y manipular el DOM
+function obtenerHora() {
+  const ahora = new Date();
+  const h = String(ahora.getHours()).padStart(2, "0");
+  const m = String(ahora.getMinutes()).padStart(2, "0");
+  const s = String(ahora.getSeconds()).padStart(2, "0");
+  return `${h}:${m}:${s}`;
+}
 boton.addEventListener("click", () => {
   likes++;
   textoContador.textContent = likes;
+    const hora = obtenerHora();
+  console.log(likes, hora);
 });
