@@ -33,6 +33,28 @@ export default function App() {
         <TouchableOpacity style={estilos.btnClick} onPress={incrementarContador}>
           <Text style={estilos.btnText}>¡Haz Clic Aquí!</Text>
         </TouchableOpacity>
+
+        {/* Tabla de registros */}
+        <View style={estilos.tableContainer}>
+          {/* Cabecera */}
+          <View style={estilos.tableHeader}>
+            <Text style={[estilos.th, estilos.cellNumero]}>Nº Clic</Text>
+            <Text style={[estilos.th, estilos.cellHora]}>Hora</Text>
+          </View>
+
+          {/* Cuerpo con scroll */}
+          <ScrollView style={estilos.tableBody}>
+            {registros.map((item, index) => (
+              <View
+                key={item.id}
+                style={[estilos.tr, index % 2 === 0 ? estilos.trEven : null]}
+              >
+                <Text style={[estilos.td, estilos.cellNumero]}>{item.numero}</Text>
+                <Text style={[estilos.td, estilos.cellHora]}>{item.hora}</Text>
+              </View>
+            ))}
+          </ScrollView>
+        </View>
       </View>
     </View>
   );
@@ -70,4 +92,30 @@ const estilos = StyleSheet.create({
     elevation: 4,
   },
   btnText: { color: "#ffffff", fontSize: 16, fontWeight: "bold" },
+  tableContainer: {
+    width: "100%",
+    marginTop: 24,
+    borderWidth: 1,
+    borderColor: "#e0e0e0",
+    borderRadius: 8,
+    overflow: "hidden",
+  },
+  tableHeader: {
+    flexDirection: "row",
+    backgroundColor: "#f8f9fa",
+    borderBottomWidth: 1,
+    borderBottomColor: "#e0e0e0",
+  },
+  tableBody: { maxHeight: 170 },
+  tr: {
+    flexDirection: "row",
+    borderBottomWidth: 1,
+    borderBottomColor: "#e0e0e0",
+    backgroundColor: "#ffffff",
+  },
+  trEven: { backgroundColor: "#fafafa" },
+  th: { color: "#7f8c8d", fontWeight: "600", fontSize: 14, padding: 10, textAlign: "center" },
+  td: { color: "#333", fontSize: 14, padding: 10, textAlign: "center" },
+  cellNumero: { flex: 1 },
+  cellHora: { flex: 1.5 },
 });
