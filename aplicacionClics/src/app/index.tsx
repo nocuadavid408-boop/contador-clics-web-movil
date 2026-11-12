@@ -36,7 +36,9 @@ export default function App() {
           Haz clic en el botón para incrementar el contador y registrar la hora exacta del evento en la tabla.
         </Text>
 
-        <Text style={estilos.counterBox}>{contador}</Text>
+        <Text style={[estilos.counterBox, contador > 10 && estilos.counterAlto]}>
+          {contador}
+        </Text>
 
         {/* Botones */}
         <View style={estilos.fila}>
@@ -101,6 +103,7 @@ const estilos = StyleSheet.create({
   title: { fontSize: 22, fontWeight: "bold", color: "#2c3e50", marginBottom: 8 },
   subtitle: { fontSize: 14, color: "#555", textAlign: "center" },
   counterBox: { fontSize: 56, fontWeight: "bold", color: "#3498db", marginVertical: 20 },
+  counterAlto: { color: "#e74c3c" },
   btnClick: {
     backgroundColor: "#2ecc71",
     paddingVertical: 12,
