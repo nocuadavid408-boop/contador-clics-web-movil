@@ -63,3 +63,7 @@ td {
   border-top: 1px solid #e0e0e0;
 }
 tbody tr:nth-child(even) { background: #fafafa; }
+
+.botones { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.btn-rojo { background: #e74c3c; }
+.btn-gris { background: #95a5a6; }
