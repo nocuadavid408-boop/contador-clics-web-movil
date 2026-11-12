@@ -18,5 +18,16 @@ boton.addEventListener("click", () => {
   likes++;
   textoContador.textContent = likes;
     const hora = obtenerHora();
-  console.log(likes, hora);
+    const fila = document.createElement("tr");
+  const celdaNumero = document.createElement("td");
+  const celdaHora = document.createElement("td");
+
+  celdaNumero.textContent = likes;
+  celdaHora.textContent = hora;
+
+  fila.appendChild(celdaNumero);
+  fila.appendChild(celdaHora);
+
+  // prepend: el registro más reciente queda arriba
+  tbody.prepend(fila);
 });
