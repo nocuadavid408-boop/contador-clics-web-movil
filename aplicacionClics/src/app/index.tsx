@@ -1,11 +1,22 @@
 import { useState } from "react";
-import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, View, TouchableOpacity, ScrollView, StyleSheet } from "react-native";
+
+type Registro = { id: number; numero: number; hora: string };
 
 export default function App() {
   const [contador, setContador] = useState(0);
+  const [registros, setRegistros] = useState<Registro[]>([]);
 
   const incrementarContador = () => {
-    setContador(contador + 1);
+    const nuevo = contador + 1;
+    const ahora = new Date();
+    const hora = [ahora.getHours(), ahora.getMinutes(), ahora.getSeconds()]
+      .map((n) => String(n).padStart(2, "0"))
+      .join(":");
+
+    setContador(nuevo);
+    // El más reciente va primero
+    setRegistros([{ id: Date.now(), numero: nuevo, hora }, ...registros]);
   };
 
   return (
