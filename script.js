@@ -14,11 +14,18 @@ function obtenerHora() {
   const s = String(ahora.getSeconds()).padStart(2, "0");
   return `${h}:${m}:${s}`;
 }
+
+function actualizarContador() {
+  textoContador.textContent = likes;
+  textoContador.classList.toggle("alto", likes > 10);
+}
+
 boton.addEventListener("click", () => {
   likes++;
-  textoContador.textContent = likes;
-    const hora = obtenerHora();
-    const fila = document.createElement("tr");
+  actualizarContador();
+
+  const hora = obtenerHora();
+  const fila = document.createElement("tr");
   const celdaNumero = document.createElement("td");
   const celdaHora = document.createElement("td");
 
@@ -30,4 +37,20 @@ boton.addEventListener("click", () => {
 
   // prepend: el registro más reciente queda arriba
   tbody.prepend(fila);
+});
+
+const botonRestar = document.getElementById("btn-restar");
+const botonReiniciar = document.getElementById("btn-reiniciar");
+
+botonRestar.addEventListener("click", () => {
+  if (likes > 0) {
+    likes--;
+    actualizarContador();
+  }
+});
+
+botonReiniciar.addEventListener("click", () => {
+  likes = 0;
+  actualizarContador();
+  tbody.innerHTML = "";
 });
